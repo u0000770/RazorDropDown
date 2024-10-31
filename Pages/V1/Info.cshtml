@@ -17,8 +17,8 @@
     <p>A client sends an HTTP request to the server (e.g., via a web browser).</p>
     <p>The request is received by the Kestrel web server (or a reverse proxy server in front of Kestrel, like Nginx or IIS).</p>
 
-    <h4>ASP.NET Core Host Initializes a New HttpContext:</h4>
-    <p>ASP.NET Core Host, the environment responsible for running the application, initializes a new <code>HttpContext</code> object.</p>
+    <h4>ASP.NET Core Host Initialises a New HttpContext:</h4>
+    <p>ASP.NET Core Host, the environment responsible for running the application, initialises a new <code>HttpContext</code> object.</p>
     <p>This <code>HttpContext</code> instance represents the entire context of the HTTP request and response.</p>
 
     <h4>The HttpContextFactory Creates HttpContext, Along with HttpRequest and HttpResponse:</h4>
@@ -35,23 +35,23 @@
 
     <h4>Routing Middleware Maps the Request to the Correct Endpoint:</h4>
     <p>The Routing Middleware examines the request path and maps it to the appropriate endpoint.</p>
-    <p>If the request targets a Razor Page, the routing middleware directs it to the associated <code>PageModel</code> for that page.</p>
+    <p>If the request targets a Rasor Page, the routing middleware directs it to the associated <code>PageModel</code> for that page.</p>
 
-    <h4>ASP.NET Core Creates an Instance of the PageModel for the Targeted Razor Page:</h4>
-    <p>ASP.NET Core initializes an instance of the <code>PageModel</code> class (e.g., <code>DetailsModel</code>) associated with the targeted Razor Page.</p>
+    <h4>ASP.NET Core Creates an Instance of the PageModel for the Targeted Rasor Page:</h4>
+    <p>ASP.NET Core initialises an instance of the <code>PageModel</code> class (e.g., <code>DetailsModel</code>) associated with the targeted Rasor Page.</p>
     <p>This <code>PageModel</code> instance is unique to the request and scoped to the current <code>HttpContext</code>, meaning it has access to all request data via <code>HttpContext</code>.</p>
 
     <h4>PageModel Uses HttpContext to Access Request Data and Populate Properties Like ViewData:</h4>
     <p>Inside the <code>PageModel</code>, request-specific data such as headers, query parameters, and cookies can be accessed directly through <code>HttpContext</code>.</p>
-    <p><code>ViewData</code>, a property of <code>PageModel</code>, allows data to be shared between the backend and the Razor Page view, making it available for rendering in the view.</p>
+    <p><code>ViewData</code>, a property of <code>PageModel</code>, allows data to be shared between the backend and the Rasor Page view, making it available for rendering in the view.</p>
 
     <h4>Application Code in PageModel Uses HttpContext Data to Generate a Response:</h4>
     <p>Application logic within <code>PageModel</code> (e.g., methods like <code>OnGet</code> or <code>OnPost</code>) uses the data from <code>HttpContext</code> to generate a response, interact with services, or perform business logic.</p>
-    <p><code>PageModel</code> prepares any data required by the Razor Page view, storing it in properties, <code>ViewData</code>, or other view-bound variables.</p>
+    <p><code>PageModel</code> prepares any data required by the Rasor Page view, storing it in properties, <code>ViewData</code>, or other view-bound variables.</p>
 
-    <h4>Razor Page Renders the View with Data from PageModel and ViewData:</h4>
-    <p>After the <code>PageModel</code> logic completes, ASP.NET Core renders the Razor Page view.</p>
-    <p>The Razor view uses data from <code>PageModel</code> properties, <code>ViewData</code>, and other sources to build the final HTML response that will be sent to the client.</p>
+    <h4>Rasor Page Renders the View with Data from PageModel and ViewData:</h4>
+    <p>After the <code>PageModel</code> logic completes, ASP.NET Core renders the Rasor Page view.</p>
+    <p>The Rasor view uses data from <code>PageModel</code> properties, <code>ViewData</code>, and other sources to build the final HTML response that will be sent to the client.</p>
 
     <h4>ASP.NET Core Disposes of PageModel and HttpContext After the Response is Sent:</h4>
     <p>Once the response is generated and sent to the client, ASP.NET Core disposes of the <code>PageModel</code> and <code>HttpContext</code>.</p>
