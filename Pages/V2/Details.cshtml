@@ -1,0 +1,18 @@
+﻿@page
+@model RazorDropDown.Pages.V2.DetailsModel
+@{
+}
+<h2>V2 Display Choice</h2>
+<p>Your Selection was @ViewData["Grade"]</p>
+<p><a href="/v2/Index">Select Another</a></p>
+
+<hr />
+
+<p>
+    Version 2 introduced us to the SelectListItem class, HTML helpers and controller action input parameters – all mechanisms for abstracting aspects of the MVC framework.
+</p>
+<p>
+    This time, I have made used the default routing rules that make available an input parameter
+    of the same name as the parameter been submitted by the form.  In effect, we have begun to bind the inputs to controller actions to the
+    view data independent of the mechanism used to provide that data.
+</p>

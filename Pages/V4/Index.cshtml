@@ -1,0 +1,69 @@
+﻿@page "{handler?}"
+@model RazorDropDown.Pages.V4.IndexModel
+@{
+}
+
+<h1>Version 4 - Single View Get Verb</h1>
+
+<p>Is different from the previous 3 versions as it uses a single view to capture the request and subsequently 
+    display the data requested. 
+    This version moves us one small step closer towards an interactive single page experience.</p>
+
+<p>This version insists on using the GET method which complicates it a little.</p>
+<p>The form looks like this: " asp-page-handler="Details" method="get" </p>
+<p> I also had to add "{handler?}" after at  Page which allows the page to handle different requests based on handlers.</p>
+<p>
+    So I have two Get handlers on one page OnGet Creates the initial List, OnGetDetails() reads the submision
+    and Updates the View. The Page now needs Model.SelectId with a BindProperty(SupportsGet = true) to display the selection.
+</p>
+   <p>If SelectId has no value, we can assume it is the initial visit to this view and there will be no result to display. However, if this property has a value,
+    then we need to display this selection and the list with this selection highlighted.
+</p>
+
+
+<hr />
+
+
+@*@using (Html.BeginForm("Details", "v4", FormMethod.Get))
+{
+<fieldset>
+    @if ( Model.SelectId == null)
+      {
+           <p> Grade Type </p>
+           @Html.DropDownListFor(m => m.SelectId, Model.List, "--Select One--")
+           <p>No current Selection</P>
+      }
+    else
+     {
+          <p> Grade Type
+          @Html.DropDownListFor(m => m.SelectId, Model.List, Model.SelectId)
+          </p>
+          <p>The current selection is @Model.SelectId</p>
+     }
+<p><input type="submit" value="Submit" /></p>
+</fieldset>
+}*@
+
+
+<form asp-page-handler="Details" method="get">
+    <fieldset>
+        @if (Model.VM.SelectId == null)
+        {
+            <p>Grade Type</p>
+            <select asp-for="VM.SelectId" asp-items="Model.VM.List" name="SelectId">
+                <option>Select -- One</option>
+            </select>
+            <p>No current Selection</p>
+        }
+        else
+        {
+            <p>Grade Type</p>
+            <select asp-for="VM.SelectId" asp-items="Model.VM.List" name="SelectId">
+            </select>
+            <p>The current selection is @Model.VM.SelectId</p>
+        }
+        <br />
+        <input type="submit" value="Submit" />
+    </fieldset>
+</form>
+

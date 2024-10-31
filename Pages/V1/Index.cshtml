@@ -1,0 +1,35 @@
+﻿@page
+@model RazorDropDown.Pages.V1.IndexModel
+
+<h2>V1</h2>
+
+<p>Contains just HTML, that includes a form with a select element and a submit button.</p>
+<p>
+    The select element has 5 options four of which relate to ‘Store’ Grades.
+    Store Grades are store classifications that help parent companies manage supplies to those stores.
+</p>
+
+<p>
+    Later we will be building a one to many model between two classes; Grade and Store,
+    but for now we are just dealing with Grades.
+</p>
+
+<p>
+    This form action will use the ‘Get’  mechanism of the http protocol to submit the selection as a query string to the
+    Detail action within a controller
+</p>
+
+
+<form action="/v1/Details" method="get">
+    <fieldset>
+        Shop Grade
+        <select id="Grade" name="Grade">
+            <option selected="selected" value="none">-- Select--</option>
+            <option value="Very Large">Very Large</option>
+            <option value="Large">Large</option>
+            <option value="Medium">Medium</option>
+            <option value="Small">Small</option>
+        </select>
+        <p><input type="submit" value="Submit" /> </p>
+    </fieldset>
+</form>

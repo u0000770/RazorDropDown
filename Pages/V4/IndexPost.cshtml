@@ -1,0 +1,48 @@
+﻿@page
+@model RazorDropDown.Pages.V4.IndexPostModel
+@{
+}
+
+<h1>Version 4 - Single View Post Verb</h1>
+
+<p>
+    Is different from the previous 3 versions as it uses a single view to capture the request 
+    and subsequently display the data requested.
+    This version moves us one small step closer towards an interactive single page experience.
+</p>
+
+<p>
+    I have two handlers on one page Get Creates the initial List, Post reads the Submition 
+    and Updates the View. The Page now needs @Model.SelectId a BindProperty to display the selection.
+
+
+    If SelectId has no value, we can assume it is the initial visit to this view and there will be no result to display. However, if this property has a value,
+    then we need to display this selection and the list with this selection highlighted.
+</p>
+
+
+<hr />
+
+<form method="post">
+    <fieldset>
+        @if (Model.VM.SelectId == null)
+        {
+            <p>Grade Type</p>
+            <select asp-for="SelectId" asp-items="Model.VM.List">
+                <option>Select -- One</option>
+            </select>
+            <p>No current Selection</p>
+        }
+        else
+        {
+            <p>Grade Type</p>
+            <select asp-for="SelectId" asp-items="Model.VM.List">
+            </select>
+            <p>The current selection is @Model.SelectId</p>
+        }
+        <br />
+        <input type="hidden" asp-for="SelectId" />
+        <input type="submit" value="Submit" />
+    </fieldset>
+</form>
+

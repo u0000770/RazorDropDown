@@ -1,0 +1,61 @@
+﻿@page
+@model RazorDropDown.Pages.V6.IndexModel
+@{
+}
+
+<h2>Version 6 One to Many with JS</h2>
+<p>
+This version builds an aggregate view model from a domain model that has two entities in with a one to many relationship. 
+The initial action displays the master list while the subsequent 
+action not only displays the master list but also displays a filtered list of related children objects.</p>
+
+<form id="MyForm" method="post">
+    <fieldset>
+    @if ( Model.SelectedGradeId == null)
+      {
+           <p> Grade Type </p>
+            <select id="GradeId" asp-for="SelectedGradeId" asp-items=Model.VM.List>
+                <option>Select -- One</option>
+            </select>
+           <p>No current Selection</P>
+      }
+    else
+     {
+          <p> Grade Type
+          <select id="GradeId" asp-for="SelectedGradeId" asp-items=Model.VM.List>
+                <option>Select -- Another</option>
+            </select>
+          </p>
+          if (Model.VM.GradeStores != null)
+          {
+          <hr />
+            <table>
+                @foreach(var i in Model.VM.GradeStores)
+                {
+                    <tr>
+                        <td>
+                        @i.StoreName
+                        </td>
+                    </tr>
+                }
+            </table>
+          }
+        <hr />
+        <p>The current selection is @Model.SelectedGradeId</p>
+     }
+    <p>
+    @* <input type="submit" value="Submit" /> *@
+    </p>
+    </fieldset>
+</form>
+
+@section scripts
+    {
+        <script type="text/javascript">
+            $(function () {
+                $("#GradeId").change(function () {
+                    $('#MyForm').submit();
+                });
+            });
+        </script>
+}

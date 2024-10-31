@@ -1,0 +1,19 @@
+﻿@page
+@model RazorDropDown.Pages.V3.DetailsModel
+@{
+}
+
+<h2>Summary</h2>
+
+<p>
+
+
+    Version 3 behaves from the users perspective in the same way to version 1 and 2.
+    However it introduces a ViewModel  as the mechanism for coupling the Page Model to the Views.
+    The ViewModel provides strongly typed links between Page Model and views and once again uses
+    abstraction to improve the testability and maintainability of our solution.
+</p>
+
+<p>Your Selection was @Model.VM.SelectId</p>
+
+<p><a href="/v3/Index">Select Another</a></p>

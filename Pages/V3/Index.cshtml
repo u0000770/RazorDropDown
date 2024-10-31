@@ -1,0 +1,43 @@
+﻿@page
+@model RazorDropDown.Pages.V3.IndexModel
+@{
+}
+
+<h1>Select List in a View Model</h1>
+<p>
+    In version 1 and version 2 we used the ViewData to make data available to the views.</P>
+ <p>   ViewData has some issues that we would like to address.
+ <p>   ViewData useful in that you can throw anything into them, and as long as you can remember the name and
+    type of the object you placed into the bag, they are simple use.
+ <p>   Alas, ViewData will not signal an error when we get our variable names within code behind and views mixed up.
+ <p>   Even if we do get the names right, we are still left to remember the type we are passing around and cast them prior to their use. 
+ <p> ViewData dose not represent best practice, a better approach is to build a specific c# class that represents the data we want to transfer, 
+     and this class in effect becomes a model of the information that is to be shared between controllers and views. 
+     It is possible with simple systems that this model of a view is a part of the core model that represents the domain ( the database ) we are working with. 
+  <p>More realistically, it will be an aggregation of parts of the model.  This model of the data that is to be presented to the view is called a ViewModel. In the same way that Data Model of the Database is an abstraction of the entities in the database presented to the Controller by the database; ViewModel is a “Model of the View” meaning it is an abstraction of the View that serves in data binding between the View and the Controller.
+
+  <p>  This version, version 3 includes a simple class SelectViewModel with a property that relates to the display of a
+    list of options within the select tag and a property that represents a selection.
+
+  <p>  As the selection options are modelled using SelectListItem what is required is a generic list of such options hence the IEnumerable<SelectListItem>
+        called List. The other aspect of a select list that requires modelling is the selection.
+        The string SelectId will hold any selected value.
+
+ <p>       As we currently don’t have a database from which to populate our ViewModel,
+        we have also included a static method  BuildList() to seed our view model with data.
+</p>
+
+<hr />
+
+
+<h2>V3</h2>
+
+<form  asp-page="Details">
+    <fieldset>
+        <select asp-for="@Model.VM.SelectId" asp-items=@Model.VM.List>
+            <option>Select -- One</option>
+        </select>
+        <br />
+        <input type="submit" value="Submit" />
+    </fieldset>
+</form>
