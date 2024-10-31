@@ -11,3 +11,13 @@
     view back to a second action via a http get with a
     query string value that was read then submitted to a second view.
 </p>
+
+<h3>Some Details if your interested</h3>
+<UL>
+    
+    <li>HttpContext is the overarching context for the entire http request,</li>
+    <li>Both PageModel and ViewData exist within its scope.</li>
+    <li>PageModel serves as the bridge between HttpContext and the view,</li>
+    <li>ViewData is a property of PageModel (backed by ViewDataDictionary) that enables data to flow from PageModel to the view,</li>
+    <li>existing only within the HttpContext scope. </li>
+</UL>
