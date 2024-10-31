@@ -1,0 +1,62 @@
+﻿@page
+@model RazorDropDown.Pages.V1.InfoModel
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASP.NET Core Request Lifecycle</title>
+   
+</head>
+<body>
+    <h2>ASP.NET Core Request Lifecycle</h2>
+
+    <h4>Kestrel (or Proxy + Kestrel) Receives the Raw HTTP Request:</h4>
+    <p>A client sends an HTTP request to the server (e.g., via a web browser).</p>
+    <p>The request is received by the Kestrel web server (or a reverse proxy server in front of Kestrel, like Nginx or IIS).</p>
+
+    <h4>ASP.NET Core Host Initializes a New HttpContext:</h4>
+    <p>ASP.NET Core Host, the environment responsible for running the application, initializes a new <code>HttpContext</code> object.</p>
+    <p>This <code>HttpContext</code> instance represents the entire context of the HTTP request and response.</p>
+
+    <h4>The HttpContextFactory Creates HttpContext, Along with HttpRequest and HttpResponse:</h4>
+    <p>The <code>HttpContextFactory</code> creates an instance of <code>HttpContext</code> for the current request.</p>
+    <p>Within this <code>HttpContext</code>, <code>HttpRequest</code> and <code>HttpResponse</code> objects are created to handle incoming and outgoing HTTP data.</p>
+
+    <h4>HttpRequest is Populated with the URL, Headers, and Query String:</h4>
+    <p><code>HttpRequest</code> is populated with all incoming request details, such as the URL, headers, and query string.</p>
+    <p>The query string is parsed into key-value pairs and stored in <code>HttpRequest.Query</code> as a dictionary, making it easy to retrieve values by key.</p>
+
+    <h4>Middleware Pipeline Processes the Request, Potentially Modifying HttpContext:</h4>
+    <p>The request is passed through the middleware pipeline, which may include components for logging, authentication, error handling, etc.</p>
+    <p>Each middleware has access to <code>HttpContext</code> and can read or modify the request or response data.</p>
+
+    <h4>Routing Middleware Maps the Request to the Correct Endpoint:</h4>
+    <p>The Routing Middleware examines the request path and maps it to the appropriate endpoint.</p>
+    <p>If the request targets a Razor Page, the routing middleware directs it to the associated <code>PageModel</code> for that page.</p>
+
+    <h4>ASP.NET Core Creates an Instance of the PageModel for the Targeted Razor Page:</h4>
+    <p>ASP.NET Core initializes an instance of the <code>PageModel</code> class (e.g., <code>DetailsModel</code>) associated with the targeted Razor Page.</p>
+    <p>This <code>PageModel</code> instance is unique to the request and scoped to the current <code>HttpContext</code>, meaning it has access to all request data via <code>HttpContext</code>.</p>
+
+    <h4>PageModel Uses HttpContext to Access Request Data and Populate Properties Like ViewData:</h4>
+    <p>Inside the <code>PageModel</code>, request-specific data such as headers, query parameters, and cookies can be accessed directly through <code>HttpContext</code>.</p>
+    <p><code>ViewData</code>, a property of <code>PageModel</code>, allows data to be shared between the backend and the Razor Page view, making it available for rendering in the view.</p>
+
+    <h4>Application Code in PageModel Uses HttpContext Data to Generate a Response:</h4>
+    <p>Application logic within <code>PageModel</code> (e.g., methods like <code>OnGet</code> or <code>OnPost</code>) uses the data from <code>HttpContext</code> to generate a response, interact with services, or perform business logic.</p>
+    <p><code>PageModel</code> prepares any data required by the Razor Page view, storing it in properties, <code>ViewData</code>, or other view-bound variables.</p>
+
+    <h4>Razor Page Renders the View with Data from PageModel and ViewData:</h4>
+    <p>After the <code>PageModel</code> logic completes, ASP.NET Core renders the Razor Page view.</p>
+    <p>The Razor view uses data from <code>PageModel</code> properties, <code>ViewData</code>, and other sources to build the final HTML response that will be sent to the client.</p>
+
+    <h4>ASP.NET Core Disposes of PageModel and HttpContext After the Response is Sent:</h4>
+    <p>Once the response is generated and sent to the client, ASP.NET Core disposes of the <code>PageModel</code> and <code>HttpContext</code>.</p>
+    <p>This cleanup includes disposing of resources within <code>HttpContext</code>, like <code>HttpRequest</code>, <code>HttpResponse</code>, and any request-scoped services used by <code>PageModel</code>.</p>
+
+</body>
+</html>
+
