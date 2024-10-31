@@ -12,9 +12,9 @@
  <p>   Alas, ViewData will not signal an error when we get our variable names within code behind and views mixed up.
  <p>   Even if we do get the names right, we are still left to remember the type we are passing around and cast them prior to their use. 
  <p> ViewData dose not represent best practice, a better approach is to build a specific c# class that represents the data we want to transfer, 
-     and this class in effect becomes a model of the information that is to be shared between controllers and views. 
+     and this class in effect becomes a model of the information that is to be shared between page model and views. 
      It is possible with simple systems that this model of a view is a part of the core model that represents the domain ( the database ) we are working with. 
-  <p>More realistically, it will be an aggregation of parts of the model.  This model of the data that is to be presented to the view is called a ViewModel. In the same way that Data Model of the Database is an abstraction of the entities in the database presented to the Controller by the database; ViewModel is a “Model of the View” meaning it is an abstraction of the View that serves in data binding between the View and the Controller.
+  <p>More realistically, it will be an aggregation of parts of the model.  This model of the data that is to be presented to the view is called a ViewModel. In the same way that Data Model of the Database is an abstraction of the entities in the database presented to the Page Model by the database; ViewModel is a “Model of the View” meaning it is an abstraction of the View that serves in data binding between the View and the Page Model.
 
   <p>  This version, version 3 includes a simple class SelectViewModel with a property that relates to the display of a
     list of options within the select tag and a property that represents a selection.
