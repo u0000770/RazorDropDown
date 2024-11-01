@@ -8,6 +8,14 @@
 
 <h1>Cookies</h1>
 
+@{if
+    ( ViewData["UserName"] != null )
+    {
+        <p>You have been here before and you are called @ViewData["UserName"]</p>
+    }
+}
+
+
 <p>Cookies are small pieces of data stored on the client’s browser, allowing data 
     persistence across multiple requests, sessions, and 
     even after the browser is closed, depending on the expiration settings.</p>

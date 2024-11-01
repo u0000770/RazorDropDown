@@ -10,6 +10,11 @@ namespace RazorDropDown.Pages.Cookie
 
         public void OnGet()
         {
+            // Check if the cookie exists and retrieve its value
+            if (Request.Cookies.TryGetValue("UserName", out var userName))
+            {
+                ViewData["UserName"] = userName; // Set the cookie value in ViewData for display
+            }
         }
 
         public IActionResult OnPost()
