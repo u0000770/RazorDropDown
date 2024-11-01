@@ -10,6 +10,11 @@ namespace RazorDropDown.Pages.Session
 
         public void OnGet()
         {
+            // Check if the session variable "UserName" exists and retrieve its value
+            if (HttpContext.Session.GetString("UserName") != null)
+            {
+                ViewData["UserName"] = HttpContext.Session.GetString("UserName"); // Set the session value in ViewData for display
+            }
         }
 
         public IActionResult OnPost()

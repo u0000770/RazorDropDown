@@ -4,6 +4,14 @@
 }
 <h1>Session</h1>
 
+@{
+    if
+    (ViewData["UserName"] != null)
+    {
+                <p>You have been here before and you are called @ViewData["UserName"]</p>
+    }
+}
+
 <p>Session variables store data on the server that persists across a user's session, 
     accessible throughout their visit. In Razor Pages, session variables are often used for data 
     that should be retained temporarily across multiple page requests, 
