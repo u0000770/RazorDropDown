@@ -1,0 +1,18 @@
+﻿@page
+@model RazorDropDown.Pages.Query2.Page2Model
+@{
+    ViewData["Title"] = "Page 2 - Read Name from URL";
+}
+
+<h1>Page 2</h1>
+
+@if (!string.IsNullOrEmpty(Model.UserName))
+{
+    <p>Welcome, @Model.UserName!</p>
+}
+else
+{
+    <p>No name found in the URL.</p>
+}
+
+<a asp-page="Index">Go back to Page 1</a>

@@ -1,0 +1,14 @@
+﻿@page
+@model RazorDropDown.Pages.Query1.IndexModel
+@{
+    ViewData["Title"] = "Page 1 - Pass Name in URL";
+}
+
+<h1>Page 1</h1>
+<form method="get">
+    <div class="form-group">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" asp-for="UserName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Go to Page 2 with Name</button>
+</form>
