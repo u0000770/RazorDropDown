@@ -1,0 +1,37 @@
+﻿@page
+@model RazorDropDown.Pages.V2.AltIndexModel
+@{
+}
+<h1>Version 2 – Html Helpers and SelectList class</h1>
+
+<p>
+    This version is slightly different 
+<p>
+    It uses the pattern you see in scaffolded code
+</p>
+<p>
+</p>So it creates a list of objects of a Domain Type, Grade. Then uses a Specific Overload on new SelectList which has SelectList(IEnumerable items, string dataValueField, string dataTextField) <p>
+    It is through abstraction we aim to reduce and remove complex details so that we can focus on a fewer and simpler ideas.
+</p>
+
+<p>
+    Within the View abstraction is achieved through HTML helpers that encapsulate both the associated HTML and Javascript.
+</p>
+
+<hr />
+
+    @*@using(Html.BeginForm("Details", "v2", FormMethod.Get)) {
+<fieldset>
+Grade Type @Html.DropDownList("Grade")
+<input type="submit" value="Submit" />
+</fieldset>
+}*@
+
+
+<form asp-page="Details" method="get">
+    <fieldset>
+        <select id="Grade" name="Grade" asp-items="@ViewData["GradeId"] as SelectList"></select>
+        <br />
+        <input type="submit" value="Submit" />
+    </fieldset>
+</form>

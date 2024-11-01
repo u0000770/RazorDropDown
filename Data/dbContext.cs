@@ -1,6 +1,7 @@
 ﻿
 using RazorDropDown.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 
 namespace RazorDropDown.Data
@@ -40,8 +41,14 @@ namespace RazorDropDown.Data
             {
                 base.OnModelCreating(builder);
 
-                // Insert Seed/Test Data
-                builder.Entity<Grade>().HasData(
+            builder.Entity<Shop>()
+                .HasOne(s => s.Grade)
+                .WithMany(g => g.Shop)
+                 .HasForeignKey(s => s.GradeId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+            // Insert Seed/Test Data
+            builder.Entity<Grade>().HasData(
                     new Grade { GradeId = 1, Description="Small"  },
                     new Grade { GradeId = 2, Description = "Medium" },
                     new Grade { GradeId = 3, Description = "Large" },

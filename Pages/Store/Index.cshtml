@@ -1,0 +1,55 @@
+﻿@page
+@model RazorDropDown.Pages.Store.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop[0].StoreNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop[0].StoreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shop[0].Description)
+            </th>
+            <th>
+              Grade  @Html.DisplayNameFor(model => model.Shop[0].Grade.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Shop) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+              @Html.DisplayFor(modelItem => item.Grade.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.StoreId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.StoreId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.StoreId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
