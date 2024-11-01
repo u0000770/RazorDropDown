@@ -1,0 +1,28 @@
+﻿@page
+@model RazorDropDown.Pages.TempData.IndexModel
+@{
+}
+
+
+<h1>TempData</h1>
+
+<p>TempData variables are used to store data temporarily between HTTP requests in Razor Pages, 
+    persisting only until they are read. They’re ideal for passing messages or short-term data across redirects, 
+    such as confirmation messages after form submissions.</p>
+
+@if (TempData["UserNameBack"] != null)
+{
+    <p>Your Current Name is, @TempData["UserNameBack"]!</p>
+}
+else
+{
+    <p>Please Use this form to give your self a memorable name</p>
+}
+
+<form method="post">
+    <div class="form-group">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" asp-for="UserName" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Go to Page 2 with Name</button>
+</form>

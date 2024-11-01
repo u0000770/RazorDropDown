@@ -15,4 +15,4 @@ else
     <p>No name found in the URL.</p>
 }
 
-<a asp-page="Page1">Go back to Page 1</a>
+<a asp-page="/Query1/Index" asp-page-handler="Back" asp-route-UserNameBack="@Model.UserName">Go back to Index</a>

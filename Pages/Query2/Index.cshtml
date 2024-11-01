@@ -4,7 +4,26 @@
     ViewData["Title"] = "Page 1 - Pass Name in URL";
 }
 
-<h1>Page 1</h1>
+
+
+<h1>Query Strings with Binding</h1>
+<p>
+    Query strings are key-value pairs appended to a URL,
+    allowing data to be passed between pages in the URL itself.
+    In Razor Pages, query strings are commonly used to filter or display specific content
+    based on parameters sent in the URL.
+</p>
+
+<p>This version usesthe PageModel  [BindProperty(SupportsGet = true)]</p>
+
+@{
+    if (Model.UserNameBack != null)
+    {
+        <p>Current User Name is @Model.UserNameBack</p>
+    }
+}
+
+
 <form method="get">
     <div class="form-group">
         <label for="name">Enter your name:</label>

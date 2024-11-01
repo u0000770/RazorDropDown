@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace RazorDropDown.Pages.Query1
@@ -9,8 +8,8 @@ namespace RazorDropDown.Pages.Query1
 
         public void OnGet(string userName)
         {
-            // Set UserName to the value from the query string parameter
-            UserName = userName;
+            UserName = userName; // Set UserName to the value from the query string parameter
         }
     }
 }
+

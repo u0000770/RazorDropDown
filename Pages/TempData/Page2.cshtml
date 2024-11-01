@@ -1,0 +1,17 @@
+﻿@page
+@model RazorDropDown.Pages.TempData.Page2Model
+@{
+}
+
+<h1>Page 2</h1>
+
+@if (TempData["UserName"] != null)
+{
+    <p>Welcome, @TempData["UserName"]!</p>
+}
+else
+{
+    <p>No name found in TempData.</p>
+}
+
+<a asp-page="/TempData/Index">Go back to Index</a>
