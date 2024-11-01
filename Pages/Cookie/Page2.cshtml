@@ -1,0 +1,19 @@
+﻿@page
+@model Page2Model
+@{
+    ViewData["Title"] = "Page 2 - Read Cookie";
+}
+
+<h1>Page 2</h1>
+
+@if (Model.UserName != null)
+{
+    <p>Welcome back, @Model.UserName!</p>
+}
+else
+{
+    <p>No name found in cookies.</p>
+}
+
+<a asp-page="Index">Go back to Page 1</a>
+

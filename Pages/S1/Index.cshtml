@@ -1,0 +1,35 @@
+﻿@page
+@model RazorDropDown.Pages.S1.IndexModel
+@{
+}
+<h1>List of Shops</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Shops[0].StoreNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shops[0].StoreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Shops[0].Description)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Shops)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.StoreNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.StoreName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.StoreId">Edit</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

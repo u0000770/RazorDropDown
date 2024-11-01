@@ -11,6 +11,7 @@ namespace RazorDropDown
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<OurDbContext>();
+            builder.Services.AddSession();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -23,6 +24,7 @@ namespace RazorDropDown
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 

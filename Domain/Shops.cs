@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel.DataAnnotations;
 
 namespace RazorDropDown.Domain
 {
@@ -11,6 +12,7 @@ namespace RazorDropDown.Domain
         public string Description { get; set; }
 
         public int GradeId { get; set; }
+        [BindNever]
         public Grade Grade { get; set; }
     }
 }
