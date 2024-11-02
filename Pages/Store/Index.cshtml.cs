@@ -21,10 +21,23 @@ namespace RazorDropDown.Pages.Store
 
         public IList<Shop> Shop { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        //public async Task OnGetAsync()
+        //{
+        //    Shop = await _context.Shops
+        //        .Include(s => s.Grade).ToListAsync();
+        //}
+
+        /// <summary>
+        /// More Explicite and Conventional
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> OnGetAsync()
         {
             Shop = await _context.Shops
-                .Include(s => s.Grade).ToListAsync();
+                .Include(s => s.Grade)
+                .ToListAsync();
+
+            return Page();
         }
     }
 }

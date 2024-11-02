@@ -16,7 +16,7 @@ namespace RazorDropDown.Pages.S2
         }
 
         [BindProperty]
-        public Shop Shop { get; set; } = new Shop();
+        public Shop Shop { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -38,7 +38,15 @@ namespace RazorDropDown.Pages.S2
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            
+            // Remove Grade from ModelState validation
+            ModelState.Remove("Shop.Grade");
+
+            //if (!ModelState.IsValid)
+            //{
+            //    ViewData["Error"] = "Model State is Invalid";
+            //    return Page();
+            //}
+
             _context.Attach(Shop).State = EntityState.Modified;
 
             try

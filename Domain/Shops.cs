@@ -8,11 +8,9 @@ namespace RazorDropDown.Domain
         [Key]
         public int StoreId { get; set; }
         public int StoreNumber { get; set; }
-        public string StoreName { get; set; }
-        public string Description { get; set; }
-
+        public required string StoreName { get; set; }
+        public required string Description { get; set; }
         public int GradeId { get; set; }
-        [BindNever]
-        public Grade Grade { get; set; }
+        public Grade? Grade { get; set; }
     }
 }

@@ -19,16 +19,21 @@ namespace RazorDropDown.Pages.Store
             _context = context;
         }
 
-        public IActionResult OnGet()
-        {
-            ViewData["GradeId"] = new SelectList(_context.Grades, "GradeId", "Description");
+
+        
+        public IActionResult OnGetAsync()
+        {   
+           
+            var slist = new SelectList(_context.Grades, "GradeId", "Description");
+            
+            ViewData["GradeId"] = slist;
+            
             return Page();
         }
 
         [BindProperty]
         public Shop Shop { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
             // Remove Grade from ModelState validation

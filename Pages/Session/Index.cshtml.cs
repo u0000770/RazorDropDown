@@ -6,7 +6,7 @@ namespace RazorDropDown.Pages.Session
     public class IndexModel : PageModel
     {
         [BindProperty]
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         public void OnGet()
         {

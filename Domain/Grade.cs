@@ -7,7 +7,7 @@ namespace RazorDropDown.Domain
     {
         [Key]
         public int GradeId { get; set; }
-        public string Description { get; set; }
-        public virtual List<Shop> Shop { get; set; }
+        public string? Description { get; set; }
+        public virtual List<Shop>? Shop { get; set; }
     }
 }

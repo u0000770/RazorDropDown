@@ -1,6 +1,11 @@
-﻿@page
+﻿
+@* The @page directive allows routing directly within Razor Pages *@
+@page
+
+@* @model directive specifies the type of the model that the Razor Page will use *@
 @model RazorDropDown.Pages.Store.IndexModel
 
+@* This block customizes the page’s title and layout, *@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
@@ -15,6 +20,7 @@
     <thead>
         <tr>
             <th>
+                @* dynamically generating labels and headers *@
                 @Html.DisplayNameFor(model => model.Shop[0].StoreNumber)
             </th>
             <th>
@@ -30,26 +36,26 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Shop) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StoreNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StoreName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-              @Html.DisplayFor(modelItem => item.Grade.Description)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.StoreId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.StoreId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.StoreId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Shop) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoreName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                      @Html.DisplayFor(modelItem => item.Grade.Description)
+                    </td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@item.StoreId">Edit</a> |
+                        <a asp-page="Details" asp-route-id="@item.StoreId">Details</a> |
+                        <a asp-page="Delete" asp-route-id="@item.StoreId">Delete</a>
+                    </td>
+                </tr>
+        }
     </tbody>
 </table>

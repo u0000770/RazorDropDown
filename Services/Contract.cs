@@ -15,5 +15,4 @@ namespace RazorDropDown.Services
         Task<EventTypeDTO> getEventType(string id);
     }
 
-
 }

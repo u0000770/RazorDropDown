@@ -22,21 +22,13 @@ namespace RazorDropDown.Pages.Store
 
         [BindProperty]
         public Shop Shop { get; set; } = default!;
-
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+            if (id == null) { return NotFound();}
             var shop =  await _context.Shops.FirstOrDefaultAsync(m => m.StoreId == id);
-            if (shop == null)
-            {
-                return NotFound();
-            }
+            if (shop == null) { return NotFound();}
             Shop = shop;
-           ViewData["GradeId"] = new SelectList(_context.Grades, "GradeId", "Description");
+            ViewData["GradeId"] = new SelectList(_context.Grades, "GradeId", "Description");
             return Page();
         }
 
@@ -44,13 +36,8 @@ namespace RazorDropDown.Pages.Store
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
+            if (!ModelState.IsValid){ return Page();}
             _context.Attach(Shop).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -66,7 +53,6 @@ namespace RazorDropDown.Pages.Store
                     throw;
                 }
             }
-
             return RedirectToPage("./Index");
         }
 

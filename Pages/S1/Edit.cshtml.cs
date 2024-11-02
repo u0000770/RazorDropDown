@@ -16,7 +16,7 @@ namespace RazorDropDown.Pages.S1
         }
 
         [BindProperty]
-        public Shop Shop { get; set; } = new Shop();
+        public Shop Shop { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

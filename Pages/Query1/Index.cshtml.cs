@@ -6,7 +6,7 @@ namespace RazorDropDown.Pages.Query1
     public class IndexModel : PageModel
     {
 
-        public string UserName { get; private set; }
+        public string? UserName { get; private set; }
 
         public IActionResult OnGet(string UserName)
         {

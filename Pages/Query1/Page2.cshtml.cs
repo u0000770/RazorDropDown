@@ -4,7 +4,7 @@ namespace RazorDropDown.Pages.Query1
 {
     public class Page2Model : PageModel
     {
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         public void OnGet(string userName)
         {
