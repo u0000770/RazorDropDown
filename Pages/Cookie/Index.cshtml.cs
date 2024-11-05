@@ -24,7 +24,7 @@ namespace RazorDropDown.Pages.Cookie
             {
                 Response.Cookies.Append("UserName", UserName, new CookieOptions
                 {
-                    Expires = DateTimeOffset.Now.AddMinutes(10) // Cookie expires in 10 minutes
+                    Expires = DateTimeOffset.Now.AddMinutes(1000000) // Cookie expires in 10 minutes
                 });
             }
 

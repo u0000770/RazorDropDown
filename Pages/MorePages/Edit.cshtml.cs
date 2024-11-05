@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using RazorDropDown.Data;
 using RazorDropDown.Domain;
 
-namespace RazorDropDown.Pages.Store
+namespace RazorDropDown.Pages.MorePages
 {
     public class EditModel : PageModel
     {
@@ -22,38 +22,37 @@ namespace RazorDropDown.Pages.Store
 
         [BindProperty]
         public Shop Shop { get; set; } = default!;
-       
-        /// <summary>
-        /// Get the object that want to modify
-        /// Get any other data I need to display on the form
-        /// Invoke the rendering of the edit form
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            /// if no id retrun a http 404 code
-            if (id == null) { return NotFound();}
-            // get the shop out of the database
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var shop =  await _context.Shops.FirstOrDefaultAsync(m => m.StoreId == id);
-            // if the shop does not exist return a http 404 code
-            if (shop == null) { return NotFound();}
-            // assign this shop to the model property Shop
+            if (shop == null)
+            {
+                return NotFound();
+            }
             Shop = shop;
-            ViewData["GradeId"] = new SelectList(_context.Grades, "GradeId", "Description");
+           ViewData["GradeId"] = new SelectList(_context.Grades, "GradeId", "GradeId");
             return Page();
         }
 
-        
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            // check if the model is valid 
-            if (!ModelState.IsValid){ return Page();}
-            // that the state of the shop you have provided had changed
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
             _context.Attach(Shop).State = EntityState.Modified;
+
             try
             {
-                // execute an Update set.... sql
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -67,6 +66,7 @@ namespace RazorDropDown.Pages.Store
                     throw;
                 }
             }
+
             return RedirectToPage("./Index");
         }
 
