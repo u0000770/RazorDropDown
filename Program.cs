@@ -13,16 +13,11 @@ namespace RazorDropDown
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<OurDbContext>();
 
-            // Access the configuration for the base URL
-            var eventTypeBaseUrl = builder.Configuration["ApiSettings:EventTypeBaseUrl"];
-            // Register HttpClient with the base address from configuration
-            builder.Services.AddHttpClient<EventTypeService>(client =>
-            {
-                client.BaseAddress = new Uri(eventTypeBaseUrl);
-            });
+            /// http injection and use of app config
+            builder.Services.AddHttpClient<EventTypeService1>();
+            builder.Services.AddScoped<EventTypeService1>();
 
 
-           
             // Set up and Register JokeApiService for Joke API
             builder.Services.AddHttpClient("JokeApiClient", client =>
             {
@@ -43,7 +38,7 @@ namespace RazorDropDown
 
 
             builder.Services.AddScoped<EntertainmentService>();
-            builder.Services.AddScoped<EventTypeService1>();
+            
             builder.Services.AddScoped<EventTypeService>();
             builder.Services.AddSession();
             var app = builder.Build();

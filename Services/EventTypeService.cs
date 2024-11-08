@@ -8,6 +8,7 @@
         public EventTypeService1(HttpClient client)
         {
             _client = client;
+            _client.BaseAddress = new Uri("https://thamcovenues.azurewebsites.net/");
         }
 
         public async Task<List<EventTypeDTO>> GetEventTypesAsync()
