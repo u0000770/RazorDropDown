@@ -1,0 +1,21 @@
+﻿@page
+@model RazorDropDown.Pages.Structure.HttpFactoryModel
+@{
+}
+
+<h1>Registering HttpClient as a Service in Program.cs AND puting the endpoint in Config</h1>
+
+<p>Utilising IHttpClientFactory to register HttpClient in the dependency injection container</p>
+
+<p>This method leverages IHttpClientFactory to manage HttpClient lifetimes efficiently</p>
+
+
+    <ul>
+        @foreach (var eventType in Model.EventTypes)
+        {
+            <li>@eventType.Title</li>
+        }
+    </ul>
+</p>
+
+

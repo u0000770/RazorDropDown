@@ -1,0 +1,16 @@
+﻿@page
+@model RazorDropDown.Pages.Structure.ServiceClassModel
+@{
+}
+
+<h1>Encapsulating HttpClient Within a Service Class</h1>
+
+<p>This pattern involves creating a service class that manages the HttpClient instance, 
+    promoting reusability and separation of concerns.</p>
+
+<ul>
+    @foreach (var eventType in Model.EventTypes)
+    {
+        <li>@eventType.Title</li>
+    }
+</ul>

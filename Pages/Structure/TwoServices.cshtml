@@ -1,0 +1,22 @@
+﻿@page
+@model RazorDropDown.Pages.Structure.TwoServicesModel
+@{
+}
+<h1>Using Named Clients with Program.cs and appsettings </h1>
+
+<p>Named HTTP clients allow you to configure specific settings (like base URLs, default headers, timeouts) 
+    for each client individually.</p>
+<p>It is Dry-er as All configurations related to HTTP clients are defined in one place</p>
+<p>The IHttpClientFactory used with named clients manages the lifecycle of HttpClient instances and underlying 
+    HttpMessageHandlers, which helps prevent socket exhaustion and resource issues</p>
+<p>In this case the integration of the two serives is within the page model?</p>
+
+
+<p>I say I say I say: @Model.Joke.Setup</p>
+<ul>
+    @foreach (var eventType in Model.EventTypes)
+    {
+        <li>@eventType.Title</li>
+    }
+</ul>
+<p>......: @Model.Joke.Punchline.. Ta Da!</p>

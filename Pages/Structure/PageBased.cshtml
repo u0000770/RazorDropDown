@@ -1,0 +1,16 @@
+﻿@page
+@model RazorDropDown.Pages.Structure.PageBasedModel
+
+@{
+    ViewData["Title"] = "Event Types within Page";
+}
+
+<h1>Instantiating HttpClient Directly Within the Razor Page</h1>
+<p>This method is straightforward but can lead to inefficient resource usage and 
+    potential socket exhaustion.</p>
+<ul>
+    @foreach (var eventType in Model.EventTypes)
+    {
+        <li>@eventType.Title</li>
+    }
+</ul>

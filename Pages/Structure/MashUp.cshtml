@@ -1,0 +1,24 @@
+﻿@page
+@model RazorDropDown.Pages.Structure.MashUpModel
+@{
+}
+
+<h1>Jokes for Event</h1>
+
+<p>This introduces two other concepts:</p>
+<p>A model specificilly defined for presentation of an object a <strong>ViewModel</strong></p>
+<p>
+    A <strong>Business Logic Service</strong> that reads the NamedEventService and the JokeService to aggrigate the Data Ansynchonously
+    into a Business Object. This has a service Layer that projects using DTOs, a Business Layer that has a POCO class and a ViewModel
+    As with the two service example it uses "Named" services within the congig file.
+</p>
+
+<dl>
+    @foreach (var item in Model.VM)
+    {
+        <dt>@item.Title</dt>
+        <dd>@item.Joke</dd>
+    }
+</dl>
+
+
